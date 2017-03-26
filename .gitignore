@@ -1,1 +1,2 @@
-node_modules
+/angular-demo/node_modules
+/rxjs-demo/node_modules
