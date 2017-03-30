@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 
-const observable = new Observable<number>(observer => {
+const interval$ = new Observable<number>(observer => {
   let count = 1;
   const interval = setInterval(() => {
     observer.next(count++);
@@ -19,7 +19,7 @@ const observable = new Observable<number>(observer => {
 
 
 
-const subscription1 = observable
+const subscription1 = interval$
   .map(value => value * value)
   .subscribe(value => console.log(value));
 
@@ -29,7 +29,7 @@ const subscription1 = observable
 
 
 
-const subscription2 = observable
+const subscription2 = interval$
   .filter(value => value % 2 == 0)
   .subscribe(value => console.log(value));
 
@@ -39,16 +39,16 @@ const subscription2 = observable
 
 
 
-const subscription3 = observable
+const subscription3 = interval$
   .map(value => value * value)
   .filter(value => value % 2 == 0)
   .subscribe(value => console.log(value));
 
-// ----1----2----3----4--->
+// ----1----2----3----4---->
 //      map => x * x
 // ----1----4----9----16--->
 //          filter
-// ---------4---------16-->
+// ---------4---------16--->
 
 
 

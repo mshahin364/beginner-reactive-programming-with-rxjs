@@ -8,17 +8,17 @@ import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/scan';
 import 'rxjs/add/operator/map';
 
-const incrementClicks = Observable.fromEvent(document.getElementById('increment'), 'click');
-const decrementClicks = Observable.fromEvent(document.getElementById('decrement'), 'click');
+const incrementClicks$ = Observable.fromEvent(document.getElementById('increment'), 'click');
+const decrementClicks$ = Observable.fromEvent(document.getElementById('decrement'), 'click');
 
-const clicks = Observable
-  .merge(incrementClicks, decrementClicks)
+const clicks$ = Observable
+  .merge(incrementClicks$, decrementClicks$)
   .map((event: any) => parseInt(event.target.value, 10));
 
-const total = clicks
+const total$ = clicks$
   .scan((total, value) => total + value, 0);
 
-total.subscribe(total => {
+total$.subscribe(total => {
   document.getElementById('counter').innerText = total.toString();
 });
 
