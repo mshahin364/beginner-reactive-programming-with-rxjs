@@ -30,7 +30,7 @@ const subscription1 = interval$
 
 
 const subscription2 = interval$
-  .filter(value => value % 2 == 0)
+  .filter(value => value % 2 === 0)
   .subscribe(value => console.log(value));
 
 // ----1----2----3----4--->
@@ -41,7 +41,7 @@ const subscription2 = interval$
 
 const subscription3 = interval$
   .map(value => value * value)
-  .filter(value => value % 2 == 0)
+  .filter(value => value % 2 === 0)
   .subscribe(value => console.log(value));
 
 // ----1----2----3----4---->
